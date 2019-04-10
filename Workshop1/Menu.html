@@ -21,166 +21,79 @@
         </nav>
     </header>
     <main>
-         <div id="window" class="uk-container align-center">
-              <div class="uk-card uk-text-left uk-width-1-3">
-                  <form id="book_form">
-                       <ul class="fieldlist">
-                            <li>
-                                <img class="book-image" src="image/database.jpg" alt="">
-                            </li>
-                            <li>
-                                <label class="required">圖書類別</label>
-                                <select id="book_category"></select>
-                            </li>
-                            <li>
-                                <label class="required">書名</label>
-                                <input id="book_name" type="text" />
-                            </li>
-                            <li>
-                                <label class="required">作者</label>
-                                <input id="book_author" type="text" />
-                            </li>
-                            <li>
-                                <label class="required">購買日期</label>
-                                <input id="bought_datepicker" />
-                            </li>
-                            <li>
-                                <label>送達日期</label>
-                                <input id="delivered_datepicker" />
-                            </li>
-                            <li>
-                                <label class="required">金額</label>
-                                <input id="book_price" type="text" />
-                            </li>
-                            <li>
-                                <label class="required">數量</label>
-                                <input id="book_amount" type="text" />
-                            </li>
-                            <li>
-                                <span>
-                                    總計&nbsp;<span id="book_total">0</span> 元
-                                </span>
-                            </li>
-                            <li class="uk-text-right">
-                                <button type="button" class="k-button k-primary btn-add-book" id="save_book">新增</button>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-
-        <span id="undo" style="display:none" class="k-button hide-on-narrow">Click here to open the window.</span>
-
-
         <div class="uk-container align-center">
             <button type="button" id="add_book" class="k-button k-primary btn-add-book">新增書籍</button>
-            <script src="data/book-data.js"></script>
-            <div id="example">
-                <div id="grid"></div>
-                <script>
-                    $(document).ready(function () {
-                        $("#grid").kendoGrid({
-                            dataSource: {
-                                data: bookData,
-                                schema: {
-                                    model: {
-                                        fields: {
-                                            BookId: { type: "number" },
-                                            BookName: { type: "string" },
-                                            BookCategory: { type: "string" },
-                                            BookAuthor: { type: "string" },
-                                            BookBoughtDate: { type: "date" },
-                                            BookDeliveredDate: { type: "date" },
-                                            BookPrice: { type: "number" },
-                                            BookAmount: { type: "number" },
-                                            BookTotal: { type: "number" },
-                                        }
-                                    }
-                                },
-                                pageSize: 20
-                            },
-                            height: 900,
-                            scrollable: true,
-                            sortable: true,
-                            toolbar: ["create"],
-                            pageable: {
-                                input: true,
-                                numeric: false
-                            },
-                            columns: [
-                                {
-                                    command: "destroy",
-                                    title: "&nbsp;",
-                                    width: 120,
-                                },
-                                {
-                                    field: "BookId",
-                                    title: "書籍編號",
-                                    width: 90,
-                                },
-                                {
-                                    field: "BookName",
-                                    title: "書籍名稱",
-                                    width: 120,
-                                },
-                                {
-                                    field: "BookCategory",
-                                    title: "書籍種類",
-                                    values: bookCategoryList,
-                                    width: 110,
-                                },
-                                {
-                                    field: "BookAuthor",
-                                    title: "作者",
-                                    width: 120,
-                                },
-                                {
-                                    field: "BookBoughtDate",
-                                    title: "購買日期",
-                                    format: "{0:yyyy-MM-dd}",
-                                    width: 140,
-                                },
-                                {
-                                    field: "BookDeliveredDate",
-                                    title: "送達狀態",
-                                    width: 150,
-                                },
-                                {
-                                    field: "BookPrice",
-                                    title: "金額",
-                                    format: "{0:c}",
-                                    width: 100,
-                                },
-                                {
-                                    field: "BookAmount",
-                                    title: "數量",
-                                    width: 80,
-                                },
-                                {
-                                    field: "BookTotal",
-                                    title: "總計",
-                                    format: "{0:c}元",
-                                    width: 150,
-                                },
-                            ]
-                        });
-                    });
-                </script>
+            
+                
+            
+            <div class="uk-container align-center">
+                <input id="search" class="k-textbox" placeholder="我要找..." />
+                <div id="grid">
+                </div>
             </div>
         </div>
+
+        <div id="window" class="uk-container align-center">
+            <div class="uk-card uk-text-left uk-width-1-3">
+                <form id="book_form">
+                    <ul class="fieldlist">
+                        <li>
+                            <img class="book-image" src="image/database.jpg" alt="">
+                        </li>
+                        <li>
+                            <label class="required">圖書類別</label>
+                            <select id="book_category"></select>
+                        </li>
+                        <li>
+                            <label class="required">書名</label>
+                            <input id="book_name" type="text" />
+                        </li>
+                        <li>
+                            <label class="required">作者</label>
+                            <input id="book_author" type="text" />
+                        </li>
+                        <li>
+                            <label class="required">購買日期</label>
+                            <input id="bought_datepicker" type="date" title="bought_datepicker" style="width: 100%"/>
+                        </li>
+                        <li>
+                            <label>送達日期</label>
+                            <input id="delivered_datepicker" type="date" title="delivered_datepicker" style="width: 100%"/>
+                        </li>
+                        <li>
+                            <label class="required">金額</label>
+                            <input id="book_price" type="text" />
+                        </li>
+                        <li>
+                            <label class="required">數量</label>
+                            <input id="book_amount" type="text" />
+                        </li>
+                        <li>
+                            <span>
+                                總計&nbsp;<span id="book_total">0</span> 元
+                            </span>
+                        </li>
+                        <li class="uk-text-right">
+                            <button type="button" class="k-button k-primary btn-add-book" id="save_book">新增</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+
         <div id="delete_book_window">
             <h4 id="delete_book_name" style="text-align:center"></h4>
             <button type="button" class="k-button k-primary btn-delete-book" id="delete_book" style="width: 100%">OK</button>
             <button type="button" class="k-button btn-delete-book" id="cancel" style="width: 100%">CANCEL</button>
         </div>
 
-
     </main>
     <script type="text/javascript" src="data/book-data.js"></script>
     
     <script src="./js/kendo.all.min.js"></script>
-    <script src="js/kendo.culture.zh-TW.min.js"></script>
-    <script src="js/kendo.messages.zh-TW.min.js"></script>
+    <script src="./js/kendo.culture.zh-TW.min.js"></script>
+    <script src="./js/kendo.messages.zh-TW.min.js"></script>
     <script src="./js/uikit.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
